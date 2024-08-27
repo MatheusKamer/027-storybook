@@ -10,6 +10,17 @@ const meta = {
   args: {
     children: 'Button',
   },
+  argTypes: {
+    disabled: { control: 'boolean' },
+    size: {
+      options: ['default', 'sm', 'lg', 'icon'],
+      control: { type: 'inline-radio' },
+    },
+    variant: {
+      options: ['default', 'destructive', 'secondary', 'outline', 'link', 'ghost'],
+      control: { type: 'select' },
+    },
+  },
   decorators: [
     (Story) => (
       <div style={{ display: 'flex', gap: '1rem' }}>
@@ -42,14 +53,12 @@ export const Secondary: Story = {
     children: 'Secondary',
     variant: 'secondary',
   },
-};
-
-export const Disabled: Story = {
-  args: {
-    children: 'Disabled',
-    variant: 'default',
-    disabled: true,
-  },
+  render: (args) => (
+    <Button {...args}>
+      <span className='mr-2'>🔥</span>
+      Secondary
+    </Button>
+  ),
 };
 
 export const Outline: Story = {
